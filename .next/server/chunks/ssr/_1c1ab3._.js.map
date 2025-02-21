@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/Hp/coding%20files/Website%20Assignment/better_clone/app/layout.js"],"sourcesContent":["export const metadata = {\r\n  title: \"Better.com Replica\",\r\n};\r\n\r\nimport Navbar from \"./Navbar\";\r\n\r\nexport default function RootLayout({ children }) {\r\n  return (\r\n    <html lang=\"en\">\r\n      <body>\r\n        <Navbar />\r\n        <main style={{ padding: \"1rem\" }}>{children}</main>\r\n      </body>\r\n    </html>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;;;;;;;AAAO,MAAM,WAAW;IACtB,OAAO;AACT;;AAIe,SAAS,WAAW,EAAE,QAAQ,EAAE;IAC7C,qBACE,8OAAC;QAAK,MAAK;kBACT,cAAA,8OAAC;;8BACC,8OAAC;;;;;8BACD,8OAAC;oBAAK,OAAO;wBAAE,SAAS;oBAAO;8BAAI;;;;;;;;;;;;;;;;;AAI3C"}},
+    {"offset": {"line": 54, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 65, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/Hp/coding%20files/Website%20Assignment/better_clone/node_modules/next/src/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = require('../../module.compiled').vendored[\n  'react-rsc'\n].ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":";AAAAA,OAAOC,OAAO,GAAGC,QAAQ,0HAAyBC,QAAQ,CACxD,YACD,CAACC,kBAAkB","ignoreList":[0]}},
+    {"offset": {"line": 67, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
