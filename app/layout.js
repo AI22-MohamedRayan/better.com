@@ -5,7 +5,7 @@ export const metadata = {
 };
 
 import Navbar from "./Navbar";
-
+ 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
