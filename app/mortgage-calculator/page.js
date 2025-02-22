@@ -31,13 +31,11 @@ const MortgageCalculator = () => {
     const monthlyInterest = interestRate / 100 / 12;
     const totalPayments = loanTerm * 12;
 
-    // Principal & Interest
     const principalAndInterest =
       loanAmount *
       ((monthlyInterest * Math.pow(1 + monthlyInterest, totalPayments)) /
         (Math.pow(1 + monthlyInterest, totalPayments) - 1));
 
-    // Simplified estimates for these:
     const propertyTaxes = (homePrice * 0.0106) / 12;
     const homeownersInsurance = (loanAmount * 0.0055) / 12;
     const hoaFees = 132;
@@ -69,7 +67,6 @@ const MortgageCalculator = () => {
   const handleDownPaymentChange = (e) => {
     const payment = parseInt(e.target.value.replace(/,/g, "").replace(/\$/g, "")) || 0;
     setDownPayment(payment);
-    // Recalculate the percentage based on the new down payment
     setDownPaymentPercent(Math.round((payment / homePrice) * 100));
   };
 
@@ -87,7 +84,6 @@ const MortgageCalculator = () => {
     setActiveInfoBox(activeInfoBox === infoType ? null : infoType);
   };
 
-  // Calculate relative widths for the colored bar segments
   const getComponentWidths = () => {
     const total =
       breakdownDetails.principalAndInterest +
@@ -120,7 +116,6 @@ const MortgageCalculator = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white">
-      {/* Heading & Intro */}
       <h1 className="text-2xl font-semibold text-gray-800 mb-3">
         Mortgage calculator
       </h1>
@@ -130,9 +125,7 @@ const MortgageCalculator = () => {
         picture and calculate your total monthly payment.
       </p>
 
-      {/* Top row: Home price & Monthly Payment */}
       <div className="flex flex-wrap gap-8 mb-6">
-        {/* Home price */}
         <div className="flex-1 min-w-[250px]">
           <h2 className="text-sm font-medium text-gray-700 mb-2">Home price</h2>
           <input
@@ -143,7 +136,6 @@ const MortgageCalculator = () => {
           />
         </div>
 
-        {/* Monthly Payment */}
         <div className="flex-1 min-w-[250px]">
           <h2 className="text-sm font-medium text-gray-700 mb-2">
             Monthly payment
@@ -154,7 +146,6 @@ const MortgageCalculator = () => {
         </div>
       </div>
 
-      {/* Down Payment Slider */}
       <div className="relative mb-8">
         <input
           type="range"
@@ -164,7 +155,7 @@ const MortgageCalculator = () => {
           onChange={handleSliderChange}
           className="w-full h-2 bg-gray-200 rounded appearance-none cursor-pointer range-sm"
         />
-        {/* Thumb indicator (optional if you want a custom thumb) */}
+
         <div
           className="absolute top-0 -mt-1 w-4 h-4 bg-gray-700 rounded-full pointer-events-none"
           style={{
@@ -174,9 +165,7 @@ const MortgageCalculator = () => {
         />
       </div>
 
-      {/* Middle row: ZIP, Down Payment, Interest, Loan Term */}
       <div className="flex flex-wrap gap-6 mb-10">
-        {/* ZIP code */}
         <div className="flex-1 min-w-[180px]">
           <label className="block text-sm text-gray-600 mb-1">ZIP code</label>
           <input
@@ -187,7 +176,6 @@ const MortgageCalculator = () => {
           />
         </div>
 
-        {/* Down payment */}
         <div className="flex-1 min-w-[180px]">
           <label className="block text-sm text-gray-600 mb-1">Down payment</label>
           <div className="flex">
@@ -206,7 +194,6 @@ const MortgageCalculator = () => {
           </div>
         </div>
 
-        {/* Interest Rate */}
         <div className="flex-1 min-w-[180px]">
           <label className="block text-sm text-gray-600 mb-1">Interest rate</label>
           <div className="relative">
@@ -220,7 +207,6 @@ const MortgageCalculator = () => {
           </div>
         </div>
 
-        {/* Length of loan */}
         <div className="flex-1 min-w-[180px]">
           <label className="block text-sm text-gray-600 mb-1">Length of loan</label>
           <div className="relative">
@@ -253,7 +239,6 @@ const MortgageCalculator = () => {
         </div>
       </div>
 
-      {/* Monthly Payment Breakdown */}
       <div>
         <h2 className="text-lg font-semibold text-gray-800 mb-4">
           Monthly payment breakdown
@@ -262,7 +247,6 @@ const MortgageCalculator = () => {
           ${formatCurrency(monthlyPayment)}/mo
         </div>
 
-        {/* Colored bar segments */}
         <div className="flex h-4 rounded-full overflow-hidden mb-6">
           <div
             className="transition-all duration-300 bg-[#008060]"
@@ -286,9 +270,7 @@ const MortgageCalculator = () => {
           />
         </div>
 
-        {/* Breakdown rows */}
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-          {/* Principal & Interest */}
           <div
             className={`relative flex items-center p-2 rounded transition-colors ${
               hoverItem === "principal" ? "bg-gray-50" : ""
@@ -314,7 +296,6 @@ const MortgageCalculator = () => {
             />
           </div>
 
-          {/* Property Taxes */}
           <div
             className={`relative flex items-center p-2 rounded transition-colors ${
               hoverItem === "taxes" ? "bg-gray-50" : ""
@@ -335,7 +316,6 @@ const MortgageCalculator = () => {
                     ...breakdownDetails,
                     propertyTaxes: newValue,
                   });
-                  // Adjust monthlyPayment directly
                   setMonthlyPayment(
                     monthlyPayment -
                       breakdownDetails.propertyTaxes +
@@ -358,7 +338,6 @@ const MortgageCalculator = () => {
             />
           </div>
 
-          {/* Homeowners Insurance */}
           <div
             className={`relative flex items-center p-2 rounded transition-colors ${
               hoverItem === "insurance" ? "bg-gray-50" : ""
@@ -401,7 +380,6 @@ const MortgageCalculator = () => {
             />
           </div>
 
-          {/* HOA Fees */}
           <div
             className={`relative flex items-center p-2 rounded transition-colors ${
               hoverItem === "hoa" ? "bg-gray-50" : ""
@@ -442,7 +420,6 @@ const MortgageCalculator = () => {
             />
           </div>
 
-          {/* Utilities */}
           <div
             className={`relative flex items-center p-2 rounded transition-colors ${
               hoverItem === "utilities" ? "bg-gray-50" : ""
@@ -467,13 +444,11 @@ const MortgageCalculator = () => {
           </div>
         </div>
 
-        {/* Copy Link (and optional Pre-Approval) */}
         <div className="mt-6 flex flex-wrap gap-3">
           <button className="px-4 py-2 text-sm rounded bg-gray-100 border border-gray-300 hover:bg-gray-200">
             Copy estimate link
           </button>
 
-          {/* If you want a “Get pre-approved” button like the original */}
           <button className="px-4 py-2 text-sm rounded bg-green-600 text-white hover:bg-green-700">
             Get pre-approved
           </button>
